@@ -4,15 +4,15 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.springframework.stereotype.Repository;
-
 import com.polarbookshop.catalogservice.domain.Book;
 import com.polarbookshop.catalogservice.domain.BookRepository;
 
+import org.springframework.stereotype.Repository;
+
 @Repository
-public class InMemoryBookRepository implements BookRepository{
-    private static final Map<String, Book> books = 
-        new ConcurrentHashMap<>();
+public class InMemoryBookRepository implements BookRepository {
+
+    private static final Map<String, Book> books = new ConcurrentHashMap<>();
 
     @Override
     public Iterable<Book> findAll() {
@@ -39,4 +39,5 @@ public class InMemoryBookRepository implements BookRepository{
     public void deleteByIsbn(String isbn) {
         books.remove(isbn);
     }
+
 }
